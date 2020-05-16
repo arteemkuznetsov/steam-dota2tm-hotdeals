@@ -1,0 +1,120 @@
+body {
+    background-color: #ebedf1;
+    font-family: Arial, sans-serif;
+}
+
+button:focus, input:focus{
+    outline: none;
+}
+
+header > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 65px;
+}
+
+.hotdeals {
+    text-shadow: coral -3px 0 1px;
+}
+
+#no-hotdeals, #ready {
+    margin-bottom: 30px;
+    display: none; /* flex / none  */
+    justify-content: center;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.content-container, .button-container {
+    background-color: white;
+    box-shadow: darkgray 0 0 5px 1px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 100px;
+    margin-bottom: 30px;
+}
+
+.top-btn {
+    border: lightgray solid 3px;
+    background-color: white;
+    width: 200px;
+    height: 68px;
+    padding: 9px;
+    cursor: pointer;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+.inner-img {
+    width: 45px;
+    height: auto;
+}
+
+#refresh-img {
+    animation: none; /* spin 2s ease infinite / none */
+}
+
+#db-update-btn {
+    background-size: 100% 200%;
+    background-image: linear-gradient(to top, rgb(233,204,198) 50%, white 50%);
+    transition: linear background-position 8790s;
+}
+
+.content-container {
+    width: 1180px;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-bottom: 50px;
+}
+
+.block {
+    height: 75px;
+    background-color: #fafafa;
+    border: lightgray solid 3px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.fire {
+    height: 60px;
+    width: auto;
+    margin-right: 15px;
+}
+
+span {
+    font-size: 23px;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+td {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100px;
+}
+
+.image-btn {
+    vertical-align: middle;
+}

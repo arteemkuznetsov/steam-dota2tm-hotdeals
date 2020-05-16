@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Hot Deals</title>
+    <link href="icon/hotdeal.svg" rel="shortcut icon">
+    <link href="css/styles.css" rel="stylesheet">
+    <script src="js/script.js"></script>
+</head>
+<body onload="document.getElementById('ready').style.display = 'flex'">
+<header>
+    <div>
+        <img src="pic/fire.png" alt="Fire" class="fire">
+        <h1 class="hotdeals">HOT DEALS</h1>
+    </div>
+    <div class="wrapper">
+        <div class="button-container">
+            <button class="top-btn" style="margin-right: 30px" onclick="requestHotDeals()">
+                <img src="pic/refresh.svg" id="refresh-img" class="inner-img" alt="Refresh">
+            </button>
+            <button class="top-btn" id="db-update-btn" title="Обновление базы данных займет 2-2.5 часа"
+                    onclick="animateDBLoading(); updateDB()">
+                <img src="pic/database.svg" id="db-update-img" class="inner-img" alt="Update database">
+            </button>
+        </div>
+    </div>
+</header>
+<div class="wrapper">
+    <div class="content-container" id="content">
+        <div class="no-hotdeals" id="ready">
+            <h1>Ready!</h1>
+        </div>
+        <div class="no-hotdeals" id="no-hotdeals">
+            <h1>No hot deals :(</h1>
+        </div>
+    </div>
+</div>
+</body>
+</html>

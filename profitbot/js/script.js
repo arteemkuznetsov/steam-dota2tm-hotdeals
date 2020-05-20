@@ -8,6 +8,8 @@ function updateDB() {
         })
 }
 
+// ОЧИЩАТЬ ПРЕДЛОЖЕНИЯ ПЕРЕД ДОБАВЛЕНИЕМ НОВЫХ!!
+
 function requestHotDeals() {
     document.getElementById('refresh-img').style.animation = 'spin 2s ease infinite';
     fetch('hotdeals.php')
@@ -50,7 +52,6 @@ function requestHotDeals() {
         )
         .catch(function (err) {
             console.log('Fetch Error :-S', err);
-            alert('Fetch Error :-S', err);
         });
 }
 

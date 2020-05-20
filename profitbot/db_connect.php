@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "admin";
+$username = "";
+$password = "";
 $database = "steamitems";
-$port = "3310";
+$port = "";
 
 $conn = new mysqli($servername, $username, $password, $database, $port);

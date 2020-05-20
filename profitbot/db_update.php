@@ -32,5 +32,4 @@ function insert()
     }
     $conn->close();
 }
-?>
 

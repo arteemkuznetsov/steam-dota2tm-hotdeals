@@ -4,7 +4,7 @@ include 'steam_actions.php';
 include 'db_connect.php';
 
 // чистый доход
-$profit = 1.3;
+$profit = 1.15;
 
 function price_cmp($market_price, $steam_price)
 {

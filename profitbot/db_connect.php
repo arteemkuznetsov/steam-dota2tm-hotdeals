@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "";
 $password = "";
-$database = "steamitems";
+$database = "";
 $port = "";
 
 $conn = new mysqli($servername, $username, $password, $database, $port);

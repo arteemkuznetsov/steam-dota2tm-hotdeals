@@ -17,7 +17,7 @@ function insert()
         // очищаем таблицу перед перезаписью, сбрасывая serial-последовательность
         mysqli_query($conn, 'TRUNCATE prices;');
         foreach ($items as $item) {
-            $answer = anonymize(priceOverviewUrlFormer($item['market_hash_name']));
+            $answer = file_get_contents(priceOverviewUrlFormer($item['market_hash_name'])); // 'file_get_contents(' заменяется на 'anonymize('
             $answer = json_decode($answer, true);
             $steam_price = formatPrice($answer['lowest_price']);
             mysqli_query($conn,

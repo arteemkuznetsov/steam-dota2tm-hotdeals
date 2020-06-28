@@ -32,18 +32,26 @@ h1 {
     justify-content: center;
 }
 
-.content-container, .button-container {
+.content-container, .control-panel {
     background-color: white;
     box-shadow: darkgray 0 0 5px 1px;
 }
 
-.button-container {
-    display: flex;
+.control-panel {
     justify-content: center;
     align-items: center;
-    width: 500px;
-    height: 100px;
+    padding: 15px 25px;
     margin-bottom: 30px;
+}
+
+.button-container {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+input[type=checkbox] {
+    transform: scale(1.2);
+    margin-right: 5px
 }
 
 .top-btn {

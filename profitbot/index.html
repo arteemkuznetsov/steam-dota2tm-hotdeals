@@ -7,21 +7,31 @@
     <link href="css/styles.css" rel="stylesheet">
     <script src="js/script.js"></script>
 </head>
-<body onload="document.getElementById('ready').style.display = 'flex'">
+<body onload="
+    document.getElementById('ready').style.display = 'flex';
+    interval = setInterval(requestHotDeals, 120000)">
 <header>
     <div>
         <img src="pic/fire.png" alt="Fire" class="fire">
         <h1 class="hotdeals">HOT DEALS</h1>
     </div>
     <div class="wrapper">
-        <div class="button-container">
-            <button class="top-btn" style="margin-right: 30px" onclick="requestHotDeals()">
-                <img src="pic/refresh.svg" id="refresh-img" class="inner-img" alt="Refresh">
-            </button>
-            <button class="top-btn" id="db-update-btn"
-                    onclick="updateDB()">
-                <img src="pic/database.svg" id="db-update-img" class="inner-img" alt="Update database">
-            </button>
+        <div class="control-panel">
+            <div class="button-container">
+                <button class="top-btn" style="margin-right: 30px" onclick="requestHotDeals()">
+                    <img src="pic/refresh.svg" id="refresh-img" class="inner-img" alt="Refresh">
+                </button>
+                <button class="top-btn" id="db-update-btn"
+                        onclick="updateDB()">
+                    <img src="pic/database.svg" id="db-update-img" class="inner-img" alt="Update database">
+                </button>
+            </div>
+            <div class="checkbox-container">
+                <label>
+                    <input type="checkbox" checked style="" onclick="setAutoRefresh(this)">
+                    <span style="font-size: 24px">Auto Refresh</span>
+                </label>
+            </div>
         </div>
     </div>
 </header>

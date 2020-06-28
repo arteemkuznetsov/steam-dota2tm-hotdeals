@@ -1,3 +1,11 @@
+let interval;
+
+function setAutoRefresh(checkbox) {
+    if (checkbox.checked)
+        interval = setInterval(requestHotDeals, 120000);
+    else clearInterval(interval);
+}
+
 function updateDB() {
     fetch('db_update.php')
         .then(function (response) {
@@ -23,7 +31,7 @@ function updateDB() {
 function requestHotDeals() {
     document.getElementById('refresh-img').style.animation = 'spin 2s ease infinite';
     fetch('hotdeals.php')
-        .then(response => {
+        .then(function (response) {
                 if (response.status === 200) {
                     let blocks = document.getElementsByClassName('block');
                     while (blocks[0]) {

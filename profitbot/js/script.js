@@ -1,20 +1,29 @@
 function updateDB() {
     fetch('db_update.php')
         .then(function (response) {
-            if (response.status !== 200) {
+            if (response.status === 200) {
+                response.json().then(function (data) {
+                        console.log(data);
+                        setTimeout(function () {
+                            alert('База данных обновлена.');
+                        }, data['items_length'] * 30000);
+                    }
+                );
+            }
+            else {
                 console.log('Looks like there was a problem. ' +
                     'Status Code: ' + response.status);
             }
         })
+        .catch(function (err) {
+            console.log(err);
+        });
 }
-
-// ОЧИЩАТЬ ПРЕДЛОЖЕНИЯ ПЕРЕД ДОБАВЛЕНИЕМ НОВЫХ!!
 
 function requestHotDeals() {
     document.getElementById('refresh-img').style.animation = 'spin 2s ease infinite';
     fetch('hotdeals.php')
-        .then(
-            function (response) {
+        .then(response => {
                 if (response.status === 200) {
                     let blocks = document.getElementsByClassName('block');
                     while (blocks[0]) {
@@ -22,8 +31,8 @@ function requestHotDeals() {
                     }
                     response.json().then(function (data) {
                         console.log(data);
+                        document.getElementById('ready').style.display = 'none';
                         if (data.length > 0) {
-                            document.getElementById('ready').style.display = 'none';
                             document.getElementById('no-hotdeals').style.display = 'none';
 
                             for (let i = 0; i < data.length; i++) {
@@ -51,7 +60,7 @@ function requestHotDeals() {
             }
         )
         .catch(function (err) {
-            console.log('Fetch Error :-S', err);
+            console.log(err);
         });
 }
 
@@ -95,9 +104,4 @@ function marketUrlFormer(market_id, market_hash_name) {
 
 function steamUrlFormer(market_hash_name) {
     return 'https://steamcommunity.com/market/listings/570/' + encodeURI(market_hash_name); // %20
-}
-
-function animateDBLoading() {
-    let dbUpdateButton = document.getElementById('db-update-btn');
-    dbUpdateButton.style.backgroundPosition = '0 100%';
 }

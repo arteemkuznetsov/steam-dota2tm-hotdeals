@@ -70,11 +70,11 @@ h1 {
     animation: none; /* spin 2s ease infinite / none */
 }
 
-#db-update-btn {
+/*#db-update-btn {
     background-size: 100% 200%;
     background-image: linear-gradient(to top, rgb(233,204,198) 50%, white 50%);
     transition: linear background-position 8790s;
-}
+}*/
 
 .content-container {
     width: 1180px;

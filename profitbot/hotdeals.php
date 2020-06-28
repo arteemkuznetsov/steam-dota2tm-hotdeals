@@ -3,8 +3,8 @@ include 'market_actions.php';
 include 'steam_actions.php';
 include 'db_connect.php';
 
-// чистый доход
-$profit = 1.15;
+global $config;
+$profit = $config['profit'];
 
 function price_cmp($market_price, $steam_price)
 {
@@ -12,10 +12,8 @@ function price_cmp($market_price, $steam_price)
     $commission = 1.15;
 
     $expected_price = $market_price * $profit * $commission;
-    if ($steam_price >= $expected_price)
-        return true;
-    else
-        return false;
+    if ($steam_price >= $expected_price) return true;
+    else return false;
 }
 
 function getSteamPriceFromDB($market_hash_name)
@@ -54,7 +52,7 @@ function hotDeals($market_items)
                 $cmp_result = price_cmp($market_price, $steam_db_price);
                 // если предложение выгодное
                 if ($cmp_result) {
-                    // проверяем еще раз делая запрос в стим!!
+                    // проверяем еще раз делая запрос в стим
                     $answer = anonymize(priceOverviewUrlFormer($market_hash_name));
                     $answer = json_decode($answer, true);
                     $steam_actual_price = formatPrice($answer['lowest_price']);
@@ -70,7 +68,6 @@ function hotDeals($market_items)
                         );
                         $counter++;
                     }
-                    // если включить, будет надежно, но ждать предложения придется три минуты вместо 20 секунд
                     //sleep(20);
                 }
             }
@@ -79,10 +76,11 @@ function hotDeals($market_items)
     }
     return $json;
 }
+set_time_limit(0);
 error_reporting(0);
 
 $market_items = getAndFilterMarketItems();
 $json = hotDeals($market_items);
 $conn->close();
 
-echo json_encode($json,JSON_UNESCAPED_UNICODE);
+echo json_encode($json, JSON_UNESCAPED_UNICODE);

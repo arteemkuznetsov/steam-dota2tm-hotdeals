@@ -1,19 +1,20 @@
 <?php
 include 'multidim_utils.php';
 
-$lower_edge = 10;
-$upper_edge = 1500;
-$popularity_7d = 50;
+$config = json_decode(file_get_contents('config.json'), true);
+
+$lower_edge = $config['lower_edge'];
+$upper_edge = $config['upper_edge'];
+$popularity_7d = $config['popularity_7d'];
 
 function getAndFilterMarketItems () {
     global $stop_list,
            $lower_edge,
            $upper_edge,
            $popularity_7d;
+    $url = 'https://market.dota2.net/api/v2/prices/class_instance/RUB.json';
     $filtered_items = [];
-    $json = json_decode(
-        file_get_contents('https://market.dota2.net/api/v2/prices/class_instance/RUB.json'),
-        true);
+    $json = json_decode(file_get_contents($url),true);
     $items = $json['items'];
     foreach ($items as $key => $item) {
         if ($item['price'] >= $lower_edge &&

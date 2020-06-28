@@ -4,8 +4,8 @@ include 'steam_actions.php';
 include 'db_connect.php';
 
 $items = getAndFilterMarketItems();
+$length = sizeof($items);
 $items = array_reverse($items, true); // идем от самых дорогих к самым дешевым вещам
-                                                // (т.к. дешевые всегда выгодные а дорогие никогда)
 insert();
 
 function insert()
@@ -33,3 +33,5 @@ function insert()
     $conn->close();
 }
 
+$json = ['items_length' => $length];
+echo json_encode($json,JSON_UNESCAPED_UNICODE);

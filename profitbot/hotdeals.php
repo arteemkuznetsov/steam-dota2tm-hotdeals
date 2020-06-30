@@ -38,9 +38,7 @@ function hotDeals($market_items)
     $json = [];
     $counter = 0;
     foreach ($market_items as $market_item) {
-        // больше +-20 проверок без перерывов осилить невозможно, потому что стим даст бан по ip
-        // поэтому максимум - 20 выгодных предложений
-        if ($counter >= 20) break;
+        //if ($counter >= 20) break;
         if ($market_item['price'] != 0) {
             $market_id = $market_item['key'];
             $market_hash_name = $market_item['market_hash_name'];

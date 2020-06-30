@@ -10,13 +10,7 @@ function updateDB() {
     fetch('db_update.php')
         .then(function (response) {
             if (response.status === 200) {
-                response.json().then(function (data) {
-                        console.log(data);
-                        setTimeout(function () {
-                            alert('База данных обновлена.');
-                        }, data['items_length'] * 30000);
-                    }
-                );
+                alert('База данных обновлена.');
             }
             else {
                 console.log('Looks like there was a problem. ' +

@@ -5,19 +5,19 @@ function priceOverviewUrlFormer($market_hash_name) {
 }
 
 function anonymize($url) {
-    $anonymize = 'http://noblockme.ru/go';
-
-    // отправка POST-запроса анонимайзеру для перехода по нужной ссылке
     $params = array(
         'url' => $url
     );
-    return file_get_contents($anonymize, false, stream_context_create(array(
-        'http' => array(
-            'method'  => 'POST',
-            'header'  => 'Content-type: application/x-www-form-urlencoded',
-            'content' => http_build_query($params)
-        )
-    )));
+    $ch = curl_init('https://jahproxy.pro/index.php');
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    $html = curl_exec($ch);
+    curl_close($ch);
+    return $html;
 }
 
 function formatPrice($value) {

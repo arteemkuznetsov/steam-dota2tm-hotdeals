@@ -35,8 +35,9 @@ function getSteamPriceFromDB($market_hash_name)
 
 function hotDeals($market_items)
 {
+    global $cameleo, $noblockme;
     $json = [];
-    $counter = 0;
+    //$counter = 0;
     foreach ($market_items as $market_item) {
         //if ($counter >= 20) break;
         if ($market_item['price'] != 0) {
@@ -51,10 +52,14 @@ function hotDeals($market_items)
                 // если предложение выгодное
                 if ($cmp_result) {
                     // проверяем еще раз делая запрос в стим
-                    $answer = anonymize(priceOverviewUrlFormer($market_hash_name));
+                    $answer = anonymize(priceOverviewUrlFormer($market_hash_name), $cameleo);
                     $answer = json_decode($answer, true);
                     $steam_actual_price = formatPrice($answer['lowest_price']);
-
+                    if ($steam_actual_price == 0) {
+                        $answer = anonymize(priceOverviewUrlFormer($market_hash_name), $noblockme);
+                        $answer = json_decode($answer, true);
+                        $steam_actual_price = formatPrice($answer['lowest_price']);
+                    }
                     $is_really_profitable = price_cmp($market_price, $steam_actual_price);
                     if ($is_really_profitable) {
                         $json[] = array(
@@ -64,7 +69,7 @@ function hotDeals($market_items)
                             'steam_price' => $steam_actual_price,
                             'profit_percent' => round(($steam_actual_price / $market_price / 1.15 - 1) * 100, 2)
                         );
-                        $counter++;
+                        //$counter++;
                     }
                     //sleep(20);
                 }

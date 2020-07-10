@@ -1,0 +1,12 @@
+{
+  "name": "tradebot",
+  "version": "1.0.0",
+  "description": "Auto buy on market.dota2.net",
+  "main": "index.js",
+  "devDependencies": {
+    "request-promise": "^4.2.5"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}

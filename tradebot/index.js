@@ -33,7 +33,7 @@ function filterOffers(apiKey, offers, steamPrice, profit) { // другие оф
     offers.forEach(offer => {
         if ((offer['price'] / 100) <= upperPrice) { // т.к. маркет возвращает цены в копейках
             filteredOffers.push(offer);
-            console.log('price: ' + offer['price'] / 100 + ' upper price: ' + upperPrice);
+            console.log('price: ' + offer['price'] / 100 + '\tupper price: ' + upperPrice);
         }
     });
     return filteredOffers;
@@ -58,10 +58,14 @@ async function buy(apiKey, offer) {
         console.log('Api Key: ' + apiKey);
 
         while (true) {
-            let items = await requestHotDeals();
             console.log('Requesting localhost');
-
+            let items = await requestHotDeals();
             if (items.length > 0) { // если есть предложения
+                items.forEach(item => {
+                    console.log(item['market_hash_name'] +
+                        '\tmarket price: ' + item['market_price'] +
+                        '\tsteam price: ' + item['steam_price']);
+                });
                 let offersToBuy = [];
                 for (let i = 0; i < items.length; i++) { // т.к. forEach ломает асинхронность
                     let offersByName = await requestAllOffersByName(apiKey, items[i]['market_hash_name']);

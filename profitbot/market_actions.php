@@ -85,5 +85,6 @@ $stop_list = [
     'Frozen Stein of the Bar Brawler',
     'Charge of the Wrathrunner Loading Screen',
     'Auspicious Armor of Eternal Eclipse',
-    'Dark Artistry Paldrons'
+    'Dark Artistry Paldrons',
+    'Pantaloons of the Bladekeeper'
 ];

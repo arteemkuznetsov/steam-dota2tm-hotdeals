@@ -3,7 +3,7 @@ let interval;
 function setAutoRefresh(checkbox) {
     if (checkbox.checked)
         interval = setInterval(requestHotDeals, 120000);
-    else clearInterval(interval);
+    else if (interval) clearInterval(interval);
 }
 
 function updateDB() {

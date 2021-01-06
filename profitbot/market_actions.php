@@ -86,5 +86,6 @@ $stop_list = [
     'Charge of the Wrathrunner Loading Screen',
     'Auspicious Armor of Eternal Eclipse',
     'Dark Artistry Paldrons',
-    'Pantaloons of the Bladekeeper'
+    'Pantaloons of the Bladekeeper',
+    'Jagged Honor Loading Screen'
 ];

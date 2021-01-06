@@ -9,7 +9,7 @@ $profit = $config['profit'];
 function price_cmp($market_price, $steam_price)
 {
     global $profit;
-    $commission = 1.15;
+    $commission = 1.15; // steam комиссия на продажу вещи из Dota 2
 
     $expected_price = $market_price * $profit * $commission;
     if ($steam_price >= $expected_price) return true;

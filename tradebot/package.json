@@ -7,6 +7,6 @@
     "request-promise": "^4.2.5"
   },
   "dependencies": {
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.7"
   }
 }
